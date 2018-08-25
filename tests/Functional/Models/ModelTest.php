@@ -116,9 +116,9 @@ class ModelTest extends TestCase
                 $value = Carbon::now()->getTimestamp(),
                 $expected = $value,
             ],
-            'other' => [
-                $key = 'other',
-                $value = 'anything',
+            'uuid' => [
+                $key = 'uuid',
+                $value = $this->faker->uuid,
                 $expected = $value,
             ],
         ];

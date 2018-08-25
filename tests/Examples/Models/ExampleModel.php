@@ -19,7 +19,7 @@ class ExampleModel extends Model
         'date' => 'date',
         'datetime' => 'datetime',
         'timestamp' => 'timestamp',
-        'other' => 'other',
+        'uuid' => 'uuid',
     ];
 
     /**
@@ -35,7 +35,7 @@ class ExampleModel extends Model
         'date',
         'datetime',
         'timestamp',
-        'other',
+        'uuid',
     ];
 
     /**
