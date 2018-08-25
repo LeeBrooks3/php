@@ -13,7 +13,7 @@ class ModelTransformerTest extends TestCase
      *
      * @var ExampleModelTransformer
      */
-    private $transformer;
+    protected $transformer;
 
     /**
      * Creates the transformer instance.

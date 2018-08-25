@@ -17,28 +17,28 @@ class ApiModelRepositoryTest extends TestCase
      *
      * @var ExampleClient|MockObject
      */
-    private $mockClient;
+    protected $mockClient;
 
     /**
      * A mocked response instance.
      *
      * @var ResponseInterface|MockObject
      */
-    private $mockResponse;
+    protected $mockResponse;
 
     /**
      * A mocked stream instance.
      *
      * @var StreamInterface|MockObject
      */
-    private $mockStream;
+    protected $mockStream;
 
     /**
      * The repository instance.
      *
      * @var ExampleApiModelRepository
      */
-    private $repository;
+    protected $repository;
 
     /**
      * Creates a mock client instance and an instance of the repository.

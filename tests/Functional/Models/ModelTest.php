@@ -13,7 +13,7 @@ class ModelTest extends TestCase
      *
      * @var ExampleModel
      */
-    private $model;
+    protected $model;
 
     /**
      * Creates the model instance.

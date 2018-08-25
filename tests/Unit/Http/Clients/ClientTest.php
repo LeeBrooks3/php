@@ -14,7 +14,7 @@ class ClientTest extends TestCase
      *
      * @var ExampleClient|MockObject
      */
-    private $client;
+    protected $client;
 
     /**
      * Creates a partially mocked client instance.
