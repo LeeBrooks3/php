@@ -41,7 +41,7 @@ class ApiModelRepositoryTest extends TestCase
     private $repository;
 
     /**
-     * Mocks the client instance and creates an instance of the repository.
+     * Creates a mock client instance and an instance of the repository.
      */
     public function setUp()
     {

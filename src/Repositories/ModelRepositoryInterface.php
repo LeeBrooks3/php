@@ -7,7 +7,7 @@ use LeeBrooks3\Models\ModelInterface;
 interface ModelRepositoryInterface
 {
     /**
-     * Display a listing of the resource.
+     * Retrieve a listing of the resource.
      *
      * @param array $params
      * @return ModelInterface[]
@@ -23,7 +23,7 @@ interface ModelRepositoryInterface
     public function create(array $attributes = []) : ModelInterface;
 
     /**
-     * Display the specified resource.
+     * Retrieve the specified resource.
      *
      * @param int|string $id
      * @param array $params

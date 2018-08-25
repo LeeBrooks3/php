@@ -8,7 +8,7 @@ use LeeBrooks3\Models\ModelInterface;
 abstract class Model extends BaseModel
 {
     /**
-     * Holds the relationship values.
+     * The models relations.
      *
      * @var array
      */
@@ -16,7 +16,7 @@ abstract class Model extends BaseModel
 
     /**
      * {@inheritdoc}
-     * This also loads any relations and adds them as attributes.
+     * This also loads any relations and returns them as the attribute values.
      *
      * @param string $key
      * @return mixed
@@ -31,7 +31,7 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Defines a relationship.
+     * Defines a relationship to a single item.
      *
      * @param string $class
      * @return string
@@ -42,7 +42,7 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Defines a relationship.
+     * Defines a relationship to multiple items.
      *
      * @param string $class
      * @return string[]
@@ -53,7 +53,7 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Gets the loaded relation.
+     * Returns the relation.
      *
      * @param string $key
      * @return ModelInterface|ModelInterface[]
@@ -64,7 +64,7 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Get a relationships value.
+     * Returns a relations value.
      *
      * @param string $key
      * @return ModelInterface|ModelInterface[]
@@ -79,7 +79,7 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Returns whether the attribute is a relation.
+     * Returns whether the given attribute is a relation.
      *
      * @param string $key
      * @return bool
@@ -90,7 +90,7 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Determine if the given relation is loaded.
+     * Returns whether the given relation is loaded.
      *
      * @param string $key
      * @return bool
@@ -101,7 +101,9 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Loads a relationship value from it defining method.
+     * Loads a relation value from it defining method.
+     * This takes the raw data from the attribute value and turns it into the model or array of models as appropriate.
+     * This is then set in the relations array so that new instances aren't created every time the relation is accessed.
      *
      * @param string $key
      * @return void

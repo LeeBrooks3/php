@@ -16,7 +16,7 @@ class ModelTest extends TestCase
     private $model;
 
     /**
-     * Creates a model instance.
+     * Creates the model instance.
      */
     public function setUp()
     {

@@ -8,10 +8,18 @@ use LeeBrooks3\Tests\Examples\Models\ExampleModel;
 
 class ExampleApiModelRepository extends ApiModelRepository
 {
-    /** @var string */
+    /**
+     * {@inheritDoc}
+     *
+     * @var string
+     */
     protected $endpoint = 'example';
 
-    /** @var string */
+    /**
+     * {@inheritDoc}
+     *
+     * @var string
+     */
     protected $model = ExampleModel::class;
 
     /**

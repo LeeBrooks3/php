@@ -8,16 +8,16 @@ use DateTimeInterface;
 trait Dates
 {
     /**
-     * The storage format of the model's date columns.
+     * The date format.
      *
      * @var string
      */
     protected $dateFormat = 'Y-m-d H:i:s';
 
     /**
-     * Return a timestamp as DateTime object with time set to 00:00:00.
+     * Returns a carbon instance for the given date value.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return Carbon
      */
     protected function asDate($value)
@@ -26,7 +26,7 @@ trait Dates
     }
 
     /**
-     * Return a timestamp as DateTime object.
+     * Returns a carbon instance for the given datetime value.
      *
      * @param  mixed  $value
      * @return Carbon
@@ -51,7 +51,7 @@ trait Dates
     }
 
     /**
-     * Convert a DateTime to a storable string.
+     * Returns the given date in the defined or given format.
      *
      * @param \DateTime|int $value
      * @param string|null $format
@@ -65,7 +65,7 @@ trait Dates
     }
 
     /**
-     * Return a timestamp as unix timestamp.
+     * Returns the given value as a unix timestamp.
      *
      * @param  mixed  $value
      * @return int
@@ -76,7 +76,7 @@ trait Dates
     }
 
     /**
-     * Get the format for database stored dates.
+     * Returns the date format.
      *
      * @return string
      */

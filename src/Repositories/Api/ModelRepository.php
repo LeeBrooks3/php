@@ -17,7 +17,7 @@ abstract class ModelRepository extends BaseModelRepository
     protected $client;
 
     /**
-     * The Restful API endpoint for this model.
+     * The restful API endpoint for this model.
      *
      * @var string
      */

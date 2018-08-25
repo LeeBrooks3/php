@@ -26,7 +26,7 @@ class TestCase extends PHPUnitTestCase
     }
 
     /**
-     * Sets up the faker.
+     * Sets up the faker instance.
      */
     protected function setUpFaker()
     {

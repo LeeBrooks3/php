@@ -15,7 +15,7 @@ class ExampleApiModel extends Model
     }
 
     /**
-     * Defines that it has many example modes.
+     * Defines that it has many example models.
      */
     protected function examples()
     {

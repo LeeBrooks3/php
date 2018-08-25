@@ -17,7 +17,7 @@ class ClientTest extends TestCase
     private $client;
 
     /**
-     * Partially mocks the client.
+     * Creates a partially mocked client instance.
      */
     public function setUp()
     {

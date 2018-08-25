@@ -84,7 +84,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * Determine if an attribute or relation exists on the model.
+     * Determine if an attribute exists on the model.
      *
      * @param string $key
      *
