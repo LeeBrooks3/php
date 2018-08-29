@@ -17,9 +17,10 @@ abstract class Client extends GuzzleClient implements ClientInterface
      */
     public function get(string $uri, array $params = []) : ResponseInterface
     {
+        $headers = $this->processHeadersFromParams($params);
         $query = http_build_query($params);
 
-        return $this->request('GET', "{$uri}?{$query}");
+        return $this->request('GET', "{$uri}?{$query}", compact('headers'));
     }
 
     /**
@@ -71,8 +72,24 @@ abstract class Client extends GuzzleClient implements ClientInterface
      */
     public function delete(string $uri, array $params = []) : ResponseInterface
     {
+        $headers = $this->processHeadersFromParams($params);
         $query = http_build_query($params);
 
-        return $this->request('DELETE', "{$uri}?{$query}");
+        return $this->request('DELETE', "{$uri}?{$query}", compact('headers'));
+    }
+
+    /**
+     * Removes and returns any headers from the given parameters.
+     *
+     * @param array $params
+     * @return array
+     */
+    private function processHeadersFromParams(array &$params) : array
+    {
+        $headers = $params['headers'] ?? [];
+
+        unset($params['headers']);
+
+        return $headers;
     }
 }
