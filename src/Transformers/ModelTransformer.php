@@ -7,6 +7,13 @@ use LeeBrooks3\Models\ModelInterface;
 abstract class ModelTransformer implements TransformerInterface
 {
     /**
+     * The namespace or name of the key used to wrap the main data of the payload.
+     *
+     * @var string
+     */
+    protected $namespace = 'data';
+
+    /**
      * Transforms the given model.
      *
      * @param ModelInterface|ModelInterface[] $value
@@ -15,10 +22,14 @@ abstract class ModelTransformer implements TransformerInterface
     public function transform($value)
     {
         if ($value instanceof ModelInterface) {
-            return $this->transformItem($value);
+            $data = $this->transformItem($value);
+        } else {
+            $data = $this->transformCollection($value);
         }
 
-        return $this->transformCollection($value);
+        return [
+            $this->namespace => $data,
+        ];
     }
 
     /**
@@ -41,7 +52,7 @@ abstract class ModelTransformer implements TransformerInterface
     protected function transformCollection(array $models) : array
     {
         return array_map(function (ModelInterface $model) {
-            return $this->transform($model);
+            return $this->transformItem($model);
         }, $models);
     }
 }

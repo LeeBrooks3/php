@@ -26,9 +26,30 @@ class ModelTransformerTest extends TestCase
     }
 
     /**
-     * Tests that an array of the model can be transformed to an array of arrays.
+     * Tests that the model can be transformed to a namespaced array.
      */
-    public function testTransform()
+    public function testTransformItem()
+    {
+        $id = $this->faker->randomNumber();
+        $value = new ExampleModel([
+            'id' => $id,
+        ]);
+
+        $result = $this->transformer->transform($value);
+
+        $expected = [
+            'data' => [
+                'id' => $id,
+            ],
+        ];
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Tests that an array of the model can be transformed to a namespaced array of arrays.
+     */
+    public function testTransformCollection()
     {
         $id = $this->faker->randomNumber();
         $value = [
@@ -40,8 +61,10 @@ class ModelTransformerTest extends TestCase
         $result = $this->transformer->transform($value);
 
         $expected = [
-            [
-                'id' => $id,
+            'data' => [
+                [
+                    'id' => $id,
+                ],
             ],
         ];
 
