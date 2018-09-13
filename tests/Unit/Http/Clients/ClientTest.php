@@ -52,14 +52,16 @@ class ClientTest extends TestCase
     public function testPost()
     {
         $fakeUri = $this->faker->url;
-        $fakeParams = [];
+        $fakeAttributes = [];
 
         $this->client->expects($this->once())
             ->method('request')
-            ->with('POST', $fakeUri, $fakeParams)
+            ->with('POST', $fakeUri, [
+                'json' => $fakeAttributes,
+            ])
             ->willReturn(new Response());
 
-        $this->client->post($fakeUri, $fakeParams);
+        $this->client->post($fakeUri, $fakeAttributes);
     }
 
     /**
@@ -70,14 +72,16 @@ class ClientTest extends TestCase
     public function testPatch()
     {
         $fakeUri = $this->faker->url;
-        $fakeParams = [];
+        $fakeAttributes = [];
 
         $this->client->expects($this->once())
             ->method('request')
-            ->with('PATCH', $fakeUri, $fakeParams)
+            ->with('PATCH', $fakeUri, [
+                'json' => $fakeAttributes,
+            ])
             ->willReturn(new Response());
 
-        $this->client->patch($fakeUri, $fakeParams);
+        $this->client->patch($fakeUri, $fakeAttributes);
     }
 
     /**
@@ -88,14 +92,16 @@ class ClientTest extends TestCase
     public function testPut()
     {
         $fakeUri = $this->faker->url;
-        $fakeParams = [];
+        $fakeAttributes = [];
 
         $this->client->expects($this->once())
             ->method('request')
-            ->with('PUT', $fakeUri, $fakeParams)
+            ->with('PUT', $fakeUri, [
+                'json' => $fakeAttributes,
+            ])
             ->willReturn(new Response());
 
-        $this->client->put($fakeUri, $fakeParams);
+        $this->client->put($fakeUri, $fakeAttributes);
     }
 
     /**

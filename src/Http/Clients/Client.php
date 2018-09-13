@@ -27,12 +27,15 @@ abstract class Client extends GuzzleClient implements ClientInterface
      * {@inheritdoc}
      *
      * @param string $uri
+     * @param array $data
      * @param array $params
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function post(string $uri, array $params = []) : ResponseInterface
+    public function post(string $uri, array $data = [], array $params = []) : ResponseInterface
     {
+        $params['json'] = $data;
+
         return $this->request('POST', $uri, $params);
     }
 
@@ -40,12 +43,15 @@ abstract class Client extends GuzzleClient implements ClientInterface
      * {@inheritdoc}
      *
      * @param string $uri
+     * @param array $data
      * @param array $params
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function patch(string $uri, array $params = []) : ResponseInterface
+    public function patch(string $uri, array $data = [], array $params = []) : ResponseInterface
     {
+        $params['json'] = $data;
+
         return $this->request('PATCH', $uri, $params);
     }
 
@@ -53,12 +59,15 @@ abstract class Client extends GuzzleClient implements ClientInterface
      * {@inheritdoc}
      *
      * @param string $uri
+     * @param array $data
      * @param array $params
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function put(string $uri, array $params = []) : ResponseInterface
+    public function put(string $uri, array $data = [], array $params = []) : ResponseInterface
     {
+        $params['json'] = $data;
+
         return $this->request('PUT', $uri, $params);
     }
 

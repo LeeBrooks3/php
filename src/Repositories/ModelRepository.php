@@ -14,12 +14,12 @@ abstract class ModelRepository implements ModelRepositoryInterface
     protected $model;
 
     /**
-     * Returns a new instance of the model.
+     * Makes an instance of the model.
      *
      * @param array $attributes
      * @return ModelInterface
      */
-    protected function model(array $attributes = []) : ModelInterface
+    protected function makeModel(array $attributes = []) : ModelInterface
     {
         $modelClass = $this->model;
 

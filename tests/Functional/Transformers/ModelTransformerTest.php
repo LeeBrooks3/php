@@ -38,9 +38,7 @@ class ModelTransformerTest extends TestCase
         $result = $this->transformer->transform($value);
 
         $expected = [
-            'data' => [
-                'id' => $id,
-            ],
+            'id' => $id,
         ];
 
         $this->assertEquals($expected, $result);
@@ -61,10 +59,8 @@ class ModelTransformerTest extends TestCase
         $result = $this->transformer->transform($value);
 
         $expected = [
-            'data' => [
-                [
-                    'id' => $id,
-                ],
+            [
+                'id' => $id,
             ],
         ];
 

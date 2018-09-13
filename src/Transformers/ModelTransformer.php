@@ -7,13 +7,6 @@ use LeeBrooks3\Models\ModelInterface;
 abstract class ModelTransformer implements TransformerInterface
 {
     /**
-     * The namespace or name of the key used to wrap the main data of the payload.
-     *
-     * @var string
-     */
-    protected $namespace = 'data';
-
-    /**
      * Transforms the given model.
      *
      * @param ModelInterface|ModelInterface[] $value
@@ -27,9 +20,7 @@ abstract class ModelTransformer implements TransformerInterface
             $data = $this->transformCollection($value);
         }
 
-        return [
-            $this->namespace => $data,
-        ];
+        return $data;
     }
 
     /**

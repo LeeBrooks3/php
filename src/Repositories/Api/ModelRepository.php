@@ -24,11 +24,11 @@ abstract class ModelRepository extends BaseModelRepository
     protected $endpoint;
 
     /**
-     * The namespace or name of the key used to wrap the main data of the payload.
+     * The enveloper or key used to wrap the main data of the payload.
      *
-     * @var string
+     * @var string|null
      */
-    protected $namespace = 'data';
+    protected $envelope = null;
 
     /**
      * @param ClientInterface $client
@@ -43,7 +43,6 @@ abstract class ModelRepository extends BaseModelRepository
      *
      * @param array $params
      * @return ModelInterface[]
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function get(array $params = []) : array
     {
@@ -55,7 +54,7 @@ abstract class ModelRepository extends BaseModelRepository
 
         return array_map(
             function (array $attributes) {
-                return $this->model($attributes);
+                return $this->makeModel($attributes);
             },
             $data ?? []
         );
@@ -66,7 +65,6 @@ abstract class ModelRepository extends BaseModelRepository
      *
      * @param array $attributes
      * @return ModelInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function create(array $attributes = []) : ModelInterface
     {
@@ -76,7 +74,7 @@ abstract class ModelRepository extends BaseModelRepository
         $response = $client->post($endpoint, ['json' => $attributes]);
         $data = $this->getResponseData($response);
 
-        return $this->model($data);
+        return $this->makeModel($data);
     }
 
     /**
@@ -85,7 +83,6 @@ abstract class ModelRepository extends BaseModelRepository
      * @param int|string $id
      * @param array $params
      * @return ModelInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function find($id, array $params = []) : ModelInterface
     {
@@ -96,7 +93,7 @@ abstract class ModelRepository extends BaseModelRepository
         $response = $client->get("{$endpoint}/{$id}?{$query}");
         $data = $this->getResponseData($response);
 
-        return $this->model($data);
+        return $this->makeModel($data);
     }
 
     /**
@@ -105,7 +102,6 @@ abstract class ModelRepository extends BaseModelRepository
      * @param ModelInterface $model
      * @param array $attributes
      * @return ModelInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function update(ModelInterface $model, array $attributes = []) : ModelInterface
     {
@@ -126,7 +122,6 @@ abstract class ModelRepository extends BaseModelRepository
      *
      * @param ModelInterface $model
      * @return void
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function delete(ModelInterface $model) : void
     {
@@ -158,13 +153,13 @@ abstract class ModelRepository extends BaseModelRepository
     }
 
     /**
-     * Returns the namespace.
+     * Returns the envelope.
      *
-     * @return string
+     * @return string|null
      */
-    protected function getNamespace() : string
+    protected function getEnvelope()
     {
-        return $this->namespace;
+        return $this->envelope;
     }
 
     /**
@@ -178,8 +173,8 @@ abstract class ModelRepository extends BaseModelRepository
         $payload = $response->getBody()->getContents();
         $content = \GuzzleHttp\json_decode($payload, true);
 
-        $namespace = $this->getNamespace();
+        $envelope = $this->getEnvelope();
 
-        return $namespace ? $content[$namespace] : $content;
+        return $envelope ? $content[$envelope] : $content;
     }
 }

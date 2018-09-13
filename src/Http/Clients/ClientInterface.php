@@ -13,7 +13,6 @@ interface ClientInterface extends GuzzleClientInterface
      * @param string $uri
      * @param array $params
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function get(string $uri, array $params = []) : ResponseInterface;
 
@@ -21,31 +20,31 @@ interface ClientInterface extends GuzzleClientInterface
      * Makes a POST request.
      *
      * @param string $uri
+     * @param array $data
      * @param array $params
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function post(string $uri, array $params = []) : ResponseInterface;
+    public function post(string $uri, array $data = [], array $params = []) : ResponseInterface;
 
     /**
      * Makes a PATCH request.
      *
      * @param string $uri
+     * @param array $data
      * @param array $params
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function patch(string $uri, array $params = []) : ResponseInterface;
+    public function patch(string $uri, array $data = [], array $params = []) : ResponseInterface;
 
     /**
      * Makes a PUT request.
      *
      * @param string $uri
+     * @param array $data
      * @param array $params
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function put(string $uri, array $params = []) : ResponseInterface;
+    public function put(string $uri, array $data = [], array $params = []) : ResponseInterface;
 
     /**
      * Makes a DELETE request.
@@ -53,7 +52,6 @@ interface ClientInterface extends GuzzleClientInterface
      * @param string $uri
      * @param array $params
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function delete(string $uri, array $params = []) : ResponseInterface;
 }
